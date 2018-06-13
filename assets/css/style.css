@@ -1,12 +1,15 @@
-.btn {
-    width: 30px;
-    height: 30px;
-    border-style: solid;
-    padding: 2px;
-    float: left;
-    margin: 2px;
-  }
+#you{
+  margin-bottom: 20px;
+}
 
-  .charSel {
-    color: darkcyan;
-  }
+#enemies{
+  margin-bottom: 20px;
+}
+
+#attack{
+  margin-bottom: 20px;
+}
+
+#defender{
+  margin-bottom: 20px;
+}
