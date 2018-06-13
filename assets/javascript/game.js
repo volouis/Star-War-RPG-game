@@ -29,19 +29,17 @@ var pick = 5;
 var opp = 5;
 var winner = 0;
 
-
 $(document).ready(function() {
 
     initial();
 
     $(".char").on("click", function(){
+
         $(".char").hide();
         $(this).show();
         $(".enemy").show();
 
         pick = parseInt($(this).attr("value"));
-        console.log(typeof pick);
-        console.log(pick);
 
         for(var i = 0; i < character.length; i++){
             if($(this).attr("value") === $(".enemy" + i).attr("value")){
@@ -54,8 +52,6 @@ $(document).ready(function() {
         $(this).hide();
 
         opp = parseInt($(this).attr("value"));
-        console.log(typeof opp);
-        console.log(opp);
 
         for(var i = 0; i < character.length; i++){
             if($(this).attr("value") === $(".fighter" + i).attr("value")){
@@ -103,45 +99,30 @@ $(document).ready(function() {
     });
 
     $("#restart").click(function(){
-        $("#you").empty();
-        $("#enemies").empty();
-        $("#defender").empty();
-        $("#yourMove").empty();
-        $("#oppMove").empty();
 
-        character = [
-            {
-                name: "OWK",
-                health: 100,
-                power: 8,
-                counter: 1
-            },
-            {
-                name: "LSW",
-                health: 130,
-                power: 8,
-                counter: 5
-            },
-            {
-                name: "DPL",
-                health: 140,
-                power: 8,
-                counter: 20
-            },
-            {
-                name: "DML",
-                health: 150,
-                power: 8,
-                counter: 25
+        $(".enemy").hide();
+        $(".fighter").hide();
+        $("#restart").hide();
+        $(".char").show();
+        $("#yourMove").text("");
+        $("#oppMove").text("");
+
+        character[0].health = 100;
+        character[1].health = 130;
+        character[2].health = 140;
+        character[3].health = 150;
+        character[pick].power = 8;
+
+        $(".btn" + pick).text(character[pick].name + " " + character[pick].health);
+
+        for(var i = 0; i < character.length; i++){
+            if(i !== pick){
+                $(".fighter" + i).text(character[i].name + " " +  character[i].health);
             }
-        ];
-        
+        }
         pick = 5;
         opp = 5;
         winner = 0;
-
-        initial();
-
     });
  
 });
@@ -178,7 +159,6 @@ function initial(){
     for(var i = 0; i < character.length; i++){
         var charBtn = $("<button>");
 
-        //charBtn.addClass("enemy enemy" + i);
         charBtn.addClass("fighter fighter" + i);
 
         charBtn.attr("data-name", character[i].name);
